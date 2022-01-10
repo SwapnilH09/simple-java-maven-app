@@ -1,0 +1,5 @@
+differences between mvn clean package and mvn clean install
+1. https://stackoverflow.com/a/55645546/8595790
+
+differences between mvn test and mvn verify
+2. https://stackoverflow.com/a/66876427/8595790

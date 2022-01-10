@@ -1,10 +1,5 @@
 pipeline {
-	agent {
-		docker {
-			image 'maven:3.8.1-adoptopenjdk-11'
-			args '-v /root/.m2:/root/.m2'
-		}
-	}
+	agent any 
 
 	stages {
 		stage('Build') {
@@ -13,21 +8,13 @@ pipeline {
 			}
 		}
 
-		stage('Test') {
+		stage('deploy') {
 			steps {
-				sh 'mvn test'
-			}
-			post {
-				always {
-					junit 'target/surefire-reports/*.xml'
-				}
-			}
-		}
-
-		stage('Deliver') {
-			steps {
-				sh './jenkins/scripts/deliver.sh'
+				sh 'mvn deploy'
 			}
 		}
 	}
 }
+
+
+
